@@ -3,6 +3,7 @@ var url = require('url');
 var topic = require('./lib/topic');
 var author = require('./lib/author');
 var search = require('./lib/search');
+var sort = require('./lib/sort');
 
 var app = http.createServer(function(request, response) {
 	var _url = request.url;
@@ -14,6 +15,10 @@ var app = http.createServer(function(request, response) {
 		} else {
 			topic.page(request, response);
 		}
+	} else if (pathname === '/sortup') {
+		sort.up(request, response);
+	} else if (pathname === '/sortdown') {
+		sort.down(request, response);
 	} else if (pathname === '/create') {
 		topic.create(request, response);
 	} else if (pathname === '/create_process') {
